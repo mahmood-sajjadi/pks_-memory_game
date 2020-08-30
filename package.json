@@ -19,6 +19,8 @@
     "typescript": "~3.7.2"
   },
   "scripts": {
+    "checkyarn": "echo \"$npm_execpath\" | grep -q \"yarn\\.js$\" || (echo '⚠️  Use yarn not npm!  ⚠️' && echo && exit 1)",
+    "preinstall": "$npm_execpath --silent run checkyarn",
     "format": "prettier --write src/**/*.ts{,x}",
     "lint": "eslint src/**/*.ts{,x}",
     "start": "react-scripts start",
