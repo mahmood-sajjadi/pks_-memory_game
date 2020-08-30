@@ -1,0 +1,72 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+        "airbnb-typescript",
+        "airbnb/hooks",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:jest/recommended",
+        "prettier",
+        "prettier/react",
+        "prettier/@typescript-eslint",
+        "plugin:prettier/recommended"
+    ],
+    "plugins": ["react", "@typescript-eslint", "jest"],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true,
+        },
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "project": "./tsconfig.json",
+    },
+    "env": {
+        "browser": true,
+        "es6": true,
+    },
+    "globals": {
+        "H": true,
+        "mapsjs": true
+    },
+    "settings": {
+        "import/extentions": [
+        ],
+        "import/parsers": {
+            "@typescript-eslint/parser": [
+                ".ts",
+            ]
+        },
+    },
+    "rules": {
+        "linebreak-style": "off",
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "auto",
+            },
+        ],
+    },
+    "overrides": [
+        {
+            "files": ["**/*.js"],
+            "rules": {
+                "@typescript-eslint/no-empty-function": 0,
+                "@typescript-eslint/camelcase": 0,
+                "@typescript-eslint/no-var-requires": 0,
+                "@typescript-eslint/explicit-function-return-type": 0
+            }
+        },
+        {
+            "files": ["**/*.ts"],
+            "rules": {
+                "no-unused-expressions": "off"
+            }
+        },
+        {
+            "files": ["**/*.spec.*"],
+            "env": {
+                "jest": true
+            },
+        }
+    ]
+}
