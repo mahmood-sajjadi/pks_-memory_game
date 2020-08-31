@@ -34,6 +34,7 @@
         "import/parsers": {
             "@typescript-eslint/parser": [
                 ".ts",
+                ".tsx"
             ]
         },
     },
@@ -57,9 +58,15 @@
             }
         },
         {
-            "files": ["**/*.ts"],
+            "files": ["**/*.ts", "**/*.tsx"],
             "rules": {
                 "no-unused-expressions": "off"
+            }
+        },
+        {
+            "files": ["**/*.tsx"],
+            "rules": {
+                "react/prop-types": "off"
             }
         },
         {
