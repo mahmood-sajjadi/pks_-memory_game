@@ -13,8 +13,8 @@ interface Props {
 
 const Container = styled.div`
   background-color: transparent;
-  width: 150px;
-  height: 200px;
+  width: 100%;
+  height: 100%;
   perspective: 500px;
 `;
 

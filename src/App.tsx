@@ -31,10 +31,23 @@ const initialState: State = {
   finished: false,
 };
 
+const Game = styled.div`
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+`;
 const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(9, 160px);
-  grid-template-rows: repeat(2, 210px);
+  grid-template-columns: repeat(6, minmax(50px, 1fr));
+  grid-template-rows: repeat(3, minmax(80px, 1fr));
+  grid-gap: 15px;
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(9, minmax(100px, 1fr));
+    grid-template-rows: repeat(2, minmax(150px, 1fr));
+  }
 `;
 
 function App(): ReactElement {
@@ -156,10 +169,13 @@ function App(): ReactElement {
     return () => {
       clearTimeout(timeout);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cards]);
+  }, [cards, reset]);
 
-  return <Container>{cardElements}</Container>;
+  return (
+    <Game>
+      <Container>{cardElements}</Container>
+    </Game>
+  );
 }
 
 export default App;
