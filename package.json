@@ -32,7 +32,7 @@
     "lint": "eslint src/**/*.ts{,x}",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage --watchAll",
     "test:debug": "CI=false react-scripts --inspect-brk test --runInBand --no-cache --watchAll=false",
     "eject": "react-scripts eject"
   },
@@ -66,6 +66,7 @@
     "prettier": "^2.1.1"
   },
   "jest": {
+    "coverageReporters": ["text-summary", "html"],
     "snapshotSerializers": [
       "jest-emotion"
     ]

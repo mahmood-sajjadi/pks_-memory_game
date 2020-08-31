@@ -24,8 +24,11 @@ const Inner = styled.div`
   width: 100%;
   height: 100%;
   text-align: center;
-  transition: ${(props: Theme = { theme: defaultTheme }) => {
-    return `transform ${defaultTheme.animation.normal}s`;
+  transition: ${(props: Theme) => {
+    return `transform ${
+      (props.theme.animation ? props.theme.animation : defaultTheme.animation)
+        .normal
+    }s`;
   }};
   transform-style: preserve-3d;
   transform: ${(props: Pick<Props, "faceTop"> & Theme) =>
