@@ -330,4 +330,68 @@ describe("getCards service", () => {
       );
     }
   });
+
+  test("WHEN click same card SHOULD not do anything", async () => {
+    process.env = {
+      ...OLD_ENV,
+      REACT_APP_DISPLAY_RESET: "2000",
+      REACT_APP_START_DELAY: "1",
+    };
+
+    const { getAllByTestId } = render(<App />);
+    const cardElements = getAllByTestId("card-container");
+    const firstCard = cardElements[0];
+    const secondCard = cardElements[0];
+    const thirdCard = cardElements[1];
+
+    const innerContainerFirst = firstCard.firstChild;
+    const innerContainerSecond = secondCard.firstChild;
+    const innerContainerThird = thirdCard.firstChild;
+
+    await waitFor(() =>
+      expect(innerContainerFirst).toHaveStyleRule(
+        "transform",
+        "rotateY(180deg)"
+      )
+    );
+
+    fireEvent(
+      firstCard,
+      new MouseEvent("click", {
+        bubbles: true,
+        cancelable: true,
+      })
+    );
+
+    await waitFor(() =>
+      expect(innerContainerFirst).toHaveStyleRule("transform", "rotateY(0deg)")
+    );
+
+    fireEvent(
+      secondCard,
+      new MouseEvent("click", {
+        bubbles: true,
+        cancelable: true,
+      })
+    );
+
+    await waitFor(() =>
+      expect(innerContainerSecond).toHaveStyleRule("transform", "rotateY(0deg)")
+    );
+
+    expect(innerContainerThird).toHaveStyleRule("transform", "rotateY(180deg)");
+
+    fireEvent(
+      thirdCard,
+      new MouseEvent("click", {
+        bubbles: true,
+        cancelable: true,
+      })
+    );
+
+    await waitFor(() =>
+      expect(innerContainerThird).toHaveStyleRule("transform", "rotateY(0deg)")
+    );
+    expect(innerContainerFirst).toHaveStyleRule("transform", "rotateY(0deg)");
+  });
 });
