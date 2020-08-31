@@ -91,7 +91,7 @@ to do that please
 * create an issue in github in this repo https://github.com/mahmood-sajjadi/pks_-memory_game/issues
 * or fork this project and do the changes.
 
-## What I like to do later
+## What I like to do later (not ordered)
 * adding husky hooks
 * add more eslit rules and prettier
 * adding more inline-comments and maybe tsdoc to auto generate documentation
