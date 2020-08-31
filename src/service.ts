@@ -1,4 +1,9 @@
 const getCards = (count: number): number[] => {
+  if (count < 2 || count > 104 || count % 2 !== 0) {
+    throw new Error(
+      `Invalid number of cards requested (${count}). Number of cards should be even and higher than 2/ less than 104`
+    );
+  }
   const result: number[] = Array(count);
   const cards: number[] = [];
   // select cards

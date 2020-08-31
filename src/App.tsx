@@ -11,6 +11,7 @@ import themeType from "theme/type";
 import Card from "Card";
 import { useTheme } from "emotion-theming";
 import defaultCards from "theme/defaultCards";
+import config from "config";
 import getCards from "./service";
 
 interface State {
@@ -40,7 +41,7 @@ function App(): ReactElement {
   const theme = useTheme<themeType>();
   const flipTimeout = useRef<NodeJS.Timeout | undefined>(undefined);
   const cards = useMemo(() => {
-    return getCards(18);
+    return getCards(config.cardsCount);
   }, []);
   const [state, setSate] = useState<State>(initialState);
 
@@ -105,7 +106,7 @@ function App(): ReactElement {
       if (faceTopsCount > 0) {
         flipTimeout.current = setTimeout(() => {
           setSate(reset(newState));
-        }, 1000);
+        }, config.displayReset);
       }
     },
     [reset, state]
@@ -150,7 +151,7 @@ function App(): ReactElement {
           started: true,
         })
       );
-    }, 5000);
+    }, config.startedDelay);
 
     return () => {
       clearTimeout(timeout);

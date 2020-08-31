@@ -36,7 +36,7 @@ const Card: React.FC<Props> = (props) => {
   const { face, back, alt, faceTop, onClick } = props;
   return (
     <Container onClick={onClick} data-testid="card-container">
-      <Inner faceTop={faceTop}>
+      <Inner faceTop={faceTop} data-testid="card-inner-container">
         <Side image={face} alt={alt} face />
         <Side image={back} alt={alt} face={false} />
       </Inner>

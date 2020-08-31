@@ -17,10 +17,11 @@
     "dotenv": "^8.2.0",
     "dotenv-expand": "^5.1.0",
     "emotion-theming": "^10.0.27",
+    "jest-emotion": "^10.0.32",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3",
+    "react-scripts": "4.0.0-next.77",
     "svg-cards": "^4.0.0",
     "typescript": "~3.8.0"
   },
@@ -64,8 +65,13 @@
     "eslint-plugin-react-hooks": "^4.1.0",
     "prettier": "^2.1.1"
   },
+  "jest": {
+    "snapshotSerializers": [
+      "jest-emotion"
+    ]
+  },
   "engines": {
-    "node": ">=12",
+    "node": ">=12 <14",
     "yarn": "^1.22.5"
   }
 }
