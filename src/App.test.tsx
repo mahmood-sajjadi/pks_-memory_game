@@ -1,5 +1,7 @@
 import React from "react";
 import { render, screen, getAllByTestId } from "@testing-library/react";
+import { ThemeProvider } from "emotion-theming";
+import defaultTheme from "theme/default";
 import App from "./App";
 
 test("renders learn react link", () => {

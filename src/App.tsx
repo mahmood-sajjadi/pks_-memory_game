@@ -10,6 +10,7 @@ import styled from "theme/styled";
 import themeType from "theme/type";
 import Card from "Card";
 import { useTheme } from "emotion-theming";
+import defaultCards from "theme/defaultCards";
 import getCards from "./service";
 
 interface State {
@@ -43,6 +44,9 @@ function App(): ReactElement {
   }, []);
   const [state, setSate] = useState<State>(initialState);
 
+  const themedCards = useMemo(() => {
+    return theme.cards || defaultCards;
+  }, [theme.cards]);
   const reset = useCallback((init: State = initialState) => {
     const newState: State = {
       ...init,
@@ -113,13 +117,13 @@ function App(): ReactElement {
         <Card
           key={element.key}
           alt="Card"
-          back={theme.cards[0]}
-          face={theme.cards[element.card]}
+          back={themedCards[0]}
+          face={themedCards[element.card]}
           faceTop={element.faceTop}
           onClick={() => flip(element.key)}
         />
       )),
-    [flip, state.cards, theme.cards]
+    [flip, state.cards, themedCards]
   );
 
   useEffect(() => {
@@ -154,12 +158,7 @@ function App(): ReactElement {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cards]);
 
-  return (
-    <Container>
-      {state.cards.map}
-      {cardElements}
-    </Container>
-  );
+  return <Container>{cardElements}</Container>;
 }
 
 export default App;
